@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<div class="main">
+
+<a href="{% url 'add_phone' %}">ADD NEW PRODUCT</a>
+
+
+            <div class="data_table">
+
+                <h3>LATEST PRODUCTS</h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>PRODUCT</th>
+                        <th>COLOR</th>
+                        <th>DENT</th>
+                        <th>CHECK OUT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in product %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.color }}</td>
+                            {% if item.dent %}
+                            <td>{{ item.dent }}</td>
+                            {% else %}
+                            <td>NONE</td>
+                            {% endif %}
+                            {% if item.sold %}
+                            <td><h3>SOLD</h3></td>
+                            {% else %}
+                            <td><a href="{% url 'sold' pk=item.pk %}">checkout</a> </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+{% endblock content %}
+
+
+

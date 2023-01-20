@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="main">
+             <div class="head">
+                <h2>SPARK ICT INVENTORY</h2>
+                <ul>
+                    <li><b>TOTAL PRODUCTS:</b>200</li>
+                    <li><b>SOLD PRODUCTS</b>300</li>
+                </ul>
+
+                <form action="{% url 'search' %}" method="POST" >
+                    {% csrf_token %}
+                    <input type="text" class="form-control" id="search_info" name="search_info" placeholder="Enter a phone or category to search" required data-error="Please enter your name">
+                   <br>
+                    <select id="search_type" name="search_type" class="form-control">
+                       <option disabled selected>select a search type</option>
+                       <option value="Phone">Phone</option>
+                       <option value="Category">Category</option>
+                   </select>
+                    <br>
+                    <button class="btn btn-danger" type="submit">SEARCH</button>
+                </form>
+            </div>
+
+            <div class="data_table">
+
+
+                <h3>LATEST PRODUCTS</h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>PRODUCT</th>
+                        <th>COLOR</th>
+                        <th>SPEC</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.color }}</td>
+                            <td>{{ product.spec }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+{% endblock content %}

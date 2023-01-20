@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="add_form">
+                <h2>SPARK ICT INVENTORY</h2>
+    <br>
+                 <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                             <button class="btn btn-danger" type="submit">ADD.</button>
+
+                 </form>
+</div>
+
+{% endblock content %}

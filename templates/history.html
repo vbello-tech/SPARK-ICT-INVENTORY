@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<div class="main">
+
+            <div class="data_table">
+
+
+                <h3>INVENTORY HISTORY</h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>PRODUCT</th>
+                        <th>CHECKED_IN</th>
+                        <th>CHECK_OUT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in product %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.checked_in_date }}</td>
+                            {% if item.date_sold %}
+                            <td>{{ item.date_sold }}</td>
+                            {% else %}
+                            <td><b>-</b></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+{% endblock content %}
+
+
+

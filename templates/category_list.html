@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<div class="main">
+
+<a href="{% url 'add_category' %}">ADD NEW CATEGORY</a>
+            <div class="data_table">
+
+
+                <h3>LATEST PRODUCTS</h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>CATEGORY</th>
+                        <th>QUANTITY</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in category %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+{% endblock content %}
+
+
+
