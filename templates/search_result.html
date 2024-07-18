@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if result %}
+    {% if search_type == "Category" %}
+<h3>Showing result for "{{ info }}" in Categories</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>PRODUCT</th>
+        <th>QUANTITY</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+
+            <td>{{ result.name }}</td>
+            <td>{{ result.quantity }} LEFT</td>
+            {% endif %}
+        </tr>
+
+    </tbody>
+</table>
+
+<br>
+
+    {% if search_type == "Product" %}
+<h3>Showing result for "{{ info }}" in Products</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>PRODUCT</th>
+        <th>COLOR</th>
+        <th>SPEC</th>
+        <th>SOLD</th>
+    </tr>
+    </thead>
+    <tbody>
+       {% for item in result %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.color }}</td>
+            <td>{{ item.spec }}
+            </td>
+            <td>
+                 {% if item.sold %}
+                SOLD
+                {% else %}
+                <a href="{% url 'sold' pk=item.pk %}">check-out</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    {% endif %}
+{% else %}
+<h5>You don't have {{ info }} in store</h5>
+{% endif %}
+
+{% endblock content %}
