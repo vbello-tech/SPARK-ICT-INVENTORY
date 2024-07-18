@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="add_form">
-                <h4>Add a new Category to Inventory</h4>
+                <h5>Complete the form bellow to check out {{ product.name }}, imei= {{ product.imei }}</h5>
     <br>
                  <form method="POST">
                         {% csrf_token %}

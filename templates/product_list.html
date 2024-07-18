@@ -3,13 +3,6 @@
 
 {% block content %}
 
-
-
-<div class="main">
-
-<a href="{% url 'add_phone' %}">ADD NEW PRODUCT</a>
-
-
             <div class="data_table">
 
                 <h3>LATEST PRODUCTS</h3>
@@ -17,32 +10,35 @@
                     <thead>
                     <tr>
                         <th>PRODUCT</th>
-                        <th>COLOR</th>
-                        <th>DENT</th>
-                        <th>CHECK OUT</th>
+                        <th>IMEI</th>
+                        <th>DETAILS</th>
+                        <th>ACTIONS</th>
                     </tr>
                     </thead>
                     <tbody>
                         {% for item in product %}
                         <tr>
                             <td>{{ item.name }}</td>
-                            <td>{{ item.color }}</td>
-                            {% if item.dent %}
-                            <td>{{ item.dent }}</td>
+                            <td>{{ item.imei }}</td>
+                            {% if item.details %}
+                            <td>{{ item.details }}</td>
                             {% else %}
                             <td>NONE</td>
                             {% endif %}
-                            {% if item.sold %}
-                            <td><h3>SOLD</h3></td>
+
+                            <td>
+                                <button class="btn btn-danger button_link"><a href="{% url 'product_detail' pk=item.pk %}"><i class="bi bi-eye" style="color: black; font-weight: 900;"></i></a></button>
+                                {% if item.sold %}
+                                Sold
                             {% else %}
-                            <td><a href="{% url 'sold' pk=item.pk %}">checkout</a> </td>
+                                <button class="btn btn-danger button_link"><a href="{% url 'sold' pk=item.pk %}"><i class="bi bi-cart-dash" style="color: black; font-weight: 900;"></i></a></button>
+                            </td>
                             {% endif %}
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
-        </div>
 
 {% endblock content %}
 

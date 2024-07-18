@@ -2,62 +2,20 @@
 
 {% block content %}
 
-{% if product_result %}
-    {% if is_category %}
-<h3>SHOWING RESULT FOR {{ info }} in CATEGORIES</h3>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>PRODUCT</th>
-        <th>QUANTITY</th>
-    </tr>
-    </thead>
-    <tbody>
-
-        <tr>
-
-            <td>{{ product_result.name }}</td>
-            <td>{{ product_result.quantity }} LEFT</td>
-            {% endif %}
-        </tr>
-
-    </tbody>
-</table>
-
-<br>
-
-    {% if not is_category %}
-<h3>SHOWING RESULT FOR {{ info }} in PHONES</h3>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>PRODUCT</th>
-        <th>COLOR</th>
-        <th>SPEC</th>
-        <th>SOLD</th>
-    </tr>
-    </thead>
-    <tbody>
-       {% for item in product_result %}
-        <tr>
-            <td>{{ item.name }}</td>
-            <td>{{ item.color }}</td>
-            <td>{{ item.spec }}
-            </td>
-            <td>
-                 {% if item.sold %}
-                SOLD
-                {% else %}
-                <a href="{% url 'sold' pk=item.pk %}">check-out</a>
-                {% endif %}
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-    {% endif %}
-{% else %}
-<h2>YOU DONT HAVE {{ info }} IN STORE</h2>
-{% endif %}
+<div class="container">
+ <form action="{% url 'search_func' %}" method="POST" >
+            {% csrf_token %}
+            <h5>Search a product</h5>
+            <input type="text" class="form-control" id="search_info" name="search_info" placeholder="Enter a product or category to search for." required data-error="This field cannot be blank">
+           <br>
+            <select id="search_type" name="search_type" class="form-control">
+               <option disabled selected>select a search type</option>
+               <option value="Product">Product</option>
+               <option value="Category">Category</option>
+           </select>
+            <br>
+            <button class="btn btn-danger ml-auto" type="submit">SEARCH</button>
+        </form>
+</div>
 
 {% endblock content %}

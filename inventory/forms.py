@@ -1,5 +1,8 @@
 from django import forms
 from .models import *
+from phonenumber_field.widgets import RegionalPhoneNumberWidget
+from phonenumber_field.formfields import PhoneNumberField
+
 
 class AddCategoryForm(forms.ModelForm):
     class Meta:
@@ -21,10 +24,12 @@ class AddCategoryForm(forms.ModelForm):
             ),
         }
 
+
 category_list = Product_Category.objects.all().values_list('name', 'name')
 product_cat_choice = []
 for item in category_list:
     product_cat_choice.append(item)
+
 
 class AddProductForm(forms.Form):
     name = forms.CharField(required=False, widget=forms.TextInput(attrs={
@@ -37,9 +42,9 @@ class AddProductForm(forms.Form):
         "placeholder": 'COLOR OF THE PHONE',
     }))
 
-    dent = forms.CharField(required=False, widget=forms.TextInput(attrs={
+    detail = forms.CharField(required=False, widget=forms.TextInput(attrs={
         'class': 'form-control',
-        "placeholder": 'DENT, e.g, broken screen, rough back-case e.t.c',
+        "placeholder": 'Detail, e.g, broken screen, rough back-case e.t.c',
     }))
 
     imei = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={
@@ -53,8 +58,18 @@ class AddProductForm(forms.Form):
     }))
 
     type = forms.ChoiceField(required=False,
-        choices=product_cat_choice,
-         widget=forms.Select(attrs={
-             'class': 'form-control bootstrap-select',
-    }))
+                             choices=product_cat_choice,
+                             widget=forms.Select(attrs={
+                                 'class': 'form-control bootstrap-select',
+                             }))
 
+
+class CheckOutForm(forms.Form):
+    buyer = forms.CharField(required=False, widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': "INPUT BUYER'S NAME",
+    }))
+    phone = PhoneNumberField(region="CA", widget=RegionalPhoneNumberWidget(attrs={
+        'class': 'form-control',
+        'placeholder': "INPUT BUYER'S PHONE NUMBER",
+    }))

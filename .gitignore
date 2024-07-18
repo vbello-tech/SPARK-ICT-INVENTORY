@@ -1,0 +1,20 @@
+user = sparkict
+pwd = motorola135
+
+# created by virtualenv automatically
+
+venv/
+.env
+db.sqlite3
+./__pycache__/
+store/__pycache__/
+accounts/__pycache__/
+accounts/migrations/__pycache__/
+inventory/__pycache__/
+inventory/migrations/__pycache__/
+.idea/
+staticfiles/
+.DS_Store
+templates/.DS_Store
+templates/registrations/.DS_Store
+

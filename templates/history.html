@@ -15,20 +15,24 @@
                     <thead>
                     <tr>
                         <th>PRODUCT</th>
+                        <th>IMEI</th>
                         <th>CHECKED_IN</th>
                         <th>CHECK_OUT</th>
+                        <th>BUYER</th>
                     </tr>
                     </thead>
                     <tbody>
                         {% for item in product %}
                         <tr>
                             <td>{{ item.name }}</td>
+                            <td>{{ item.imei }}</td>
                             <td>{{ item.checked_in_date }}</td>
                             {% if item.date_sold %}
                             <td>{{ item.date_sold }}</td>
                             {% else %}
                             <td><b>-</b></td>
                             {% endif %}
+                            <td>{{ item.buyer }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

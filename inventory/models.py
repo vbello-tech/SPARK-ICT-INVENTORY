@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 # Create your models here.
 
@@ -10,10 +12,12 @@ class Product_Category(models.Model):
     def __str__(self):
         return self.name
 
+
 category_list = Product_Category.objects.all().values_list('name', 'name')
 product_cat_choice = []
 for item in category_list:
     product_cat_choice.append(item)
+
 
 class Product(models.Model):
     name = models.CharField(max_length=300)
@@ -23,12 +27,15 @@ class Product(models.Model):
     sold = models.BooleanField(default=False)
     checked_in = models.BooleanField(default=False)
     spec = models.CharField(max_length=300)
-    dent = models.CharField(max_length=300, blank=True, null=True)
+    details = models.CharField(max_length=300, blank=True, null=True)
     date_sold = models.DateField(blank=True, null=True)
     checked_in_date = models.DateField(blank=True, null=True)
     seller = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    buyer = models.CharField(max_length=300, blank=True, null=True)
+    buyer_phone = PhoneNumberField(blank=True, null=True)
+
+    def get_quantity(self):
+        return self.quantity
 
     def __str__(self):
         return self.name
-
-

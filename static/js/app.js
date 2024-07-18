@@ -1,7 +1,10 @@
-const menu = document.querySelector('#mobile-menu');
-const menuLinks = document.querySelector('.nav-menu');
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+    document.querySelector('.sidebar').classList.toggle('show');
+    document.getElementById('overlay').classList.toggle('show');
+});
 
-menu.addEventListener('click', function () {
-    menu.classList.toggle('is-active');
-    menuLinks.classList.toggle('active');
-})
+document.getElementById('overlay').addEventListener('click', function() {
+    document.querySelector('.sidebar').classList.remove('show');
+    document.getElementById('overlay').classList.remove('show');
+});
+
