@@ -4,6 +4,7 @@ pwd = motorola135
 # created by virtualenv automatically
 
 venv/
+.env
 db.sqlite3
 ./__pycache__/
 store/__pycache__/
