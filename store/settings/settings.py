@@ -4,7 +4,7 @@ Django settings for store project.
 
 from pathlib import Path
 import os
-# from decouple import config
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,13 +14,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = config('SECRET_KEY')
-SECRET_KEY = 'django-insecure-%9t*g-9x#s_v8i%h-u6^6h5nh-khs%-)w^3s+6tt-x*36*y&nh'
+SECRET_KEY = config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = config('DEBUG')
-DEBUG = True
+DEBUG = config('DEBUG')
+
 
 ALLOWED_HOSTS = []
 
@@ -77,26 +76,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'store.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': "Spark_Inventory",
-#         'USER': "postgres",
-#         'PASSWORD': "vbello1289",
-#         'HOST': 'localhost',
-#         'PORT': 5432,
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
