@@ -14,3 +14,9 @@ DATABASES = {
         'PORT': config('PORT'),
     }
 }
+
+STORAGES = {
+    "staticfiles": {
+        "whitenoise.storage.CompressedStaticFilesStorage",  # remove static manifest
+    },
+}

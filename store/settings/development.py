@@ -20,3 +20,9 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
