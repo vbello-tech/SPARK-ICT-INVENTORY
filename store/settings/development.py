@@ -16,7 +16,7 @@ DATABASES = {
         'NAME': "Spark_Inventory",
         'USER': "postgres",
         'PASSWORD': config('PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': config('HOST'),
         'PORT': config('PORT'),
     }
 }
