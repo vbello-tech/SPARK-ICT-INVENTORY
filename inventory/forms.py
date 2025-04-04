@@ -6,7 +6,7 @@ from phonenumber_field.formfields import PhoneNumberField
 
 class AddCategoryForm(forms.ModelForm):
     class Meta:
-        model = Product_Category
+        model = ProductCategory
         fields = ('name', 'quantity')
 
         widgets = {
@@ -25,7 +25,7 @@ class AddCategoryForm(forms.ModelForm):
         }
 
 
-category_list = Product_Category.objects.all().values_list('name', 'name')
+category_list = ProductCategory.objects.all().values_list('name', 'name')
 product_cat_choice = []
 for item in category_list:
     product_cat_choice.append(item)

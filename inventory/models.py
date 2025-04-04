@@ -5,7 +5,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
-class Product_Category(models.Model):
+class ProductCategory(models.Model):
     name = models.CharField(max_length=300)
     quantity = models.IntegerField(default=0)
 
@@ -13,7 +13,7 @@ class Product_Category(models.Model):
         return self.name
 
 
-category_list = Product_Category.objects.all().values_list('name', 'name')
+category_list = ProductCategory.objects.all().values_list('name', 'name')
 product_cat_choice = []
 for item in category_list:
     product_cat_choice.append(item)

@@ -1,5 +1,6 @@
-user = sparkict
-pwd = motorola135
+kola12345
+spark@ict.com
+sparkict
 
 # created by virtualenv automatically
 
@@ -16,4 +17,7 @@ staticfiles/
 .DS_Store
 templates/.DS_Store
 templates/registrations/.DS_Store
+db.sqlite3
+.env
+
 

@@ -27,7 +27,7 @@ def get_result(search_info, search_type):
             name=search_info
         )
     elif search_type == "Category":
-        return Product_Category.objects.get(
+        return ProductCategory.objects.get(
             name=search_info
         )
 
@@ -131,7 +131,7 @@ class CheckoutView(View, LoginRequiredMixin):
                 product.buyer = buyer
                 product.phone = phone
                 product.save()
-                product_category = Product_Category.objects.get(name=product.type)
+                product_category = ProductCategory.objects.get(name=product.type)
                 product_category.quantity -= 1
                 product_category.save()
 
@@ -163,7 +163,7 @@ def productdetail(request, pk):
 
 class CategoryView(View, LoginRequiredMixin):
     def get(self, request, *args, **kwargs):
-        category = Product_Category.objects.all()
+        category = ProductCategory.objects.all()
         context = {
             'category': category,
         }
