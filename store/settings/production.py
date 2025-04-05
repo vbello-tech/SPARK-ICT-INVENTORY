@@ -16,7 +16,10 @@ DATABASES = {
 }
 
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
-        "whitenoise.storage.CompressedStaticFilesStorage",  # remove static manifest
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
